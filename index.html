@@ -301,6 +301,16 @@
   /* ── DIVIDER ── */
   .divider { height: 1px; background: var(--border); margin: 24px 0; }
 </style>
+<script>
+function jumpTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var offset = 120;
+  var scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  var top = el.getBoundingClientRect().top + scrollY - offset;
+  try { window.scrollTo({ top: top, behavior: 'smooth' }); } catch(e) { window.scrollTo(0, top); }
+}
+</script>
 </head>
 <body>
 
@@ -652,14 +662,6 @@
 </div>
 
 
-function jumpTo(id) {
-  var el = document.getElementById(id);
-  if (el) {
-    var offset = 120;
-    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-  }
-}
-</script>
+
 </body>
 </html>

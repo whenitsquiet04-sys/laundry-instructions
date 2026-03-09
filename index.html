@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +9,10 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --blue: #16A34A;
-    --blue-light: #DCFCE7;
-    --green: #16A34A;
-    --green-light: #F0FDF4;
+    --blue: #78B833;
+    --blue-light: #EEF7DC;
+    --green: #78B833;
+    --green-light: #EEF7DC;
     --orange: #EA580C;
     --orange-light: #FFF7ED;
     --ink: #0F172A;
@@ -211,7 +210,7 @@
   .refill-title {
     font-size: 15px;
     font-weight: 700;
-    color: var(--green);
+    color: var(--ink);
     margin-bottom: 4px;
     line-height: 1.3;
   }
@@ -233,7 +232,7 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .eco-icon { font-size: 22px; flex-shrink: 0; }
-  .eco-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+  .eco-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
   .eco-detail { font-size: 12px; color: var(--ink2); line-height: 1.4; }
 
   /* ── RTL support ── */
@@ -295,7 +294,7 @@
   .lang-divider-name {
     font-family: 'DM Serif Display', serif;
     font-size: 20px;
-    color: var(--blue);
+    color: var(--ink);
     font-weight: 400;
   }
 
@@ -308,13 +307,15 @@
 <div class="header">
   <div class="header-inner">
     <div style="font-family:'DM Serif Display',serif;font-size:28px;color:white;letter-spacing:-0.3px;">Laundry Detergent</div>
-    <div class="header-sub">Instructions · Français · தமிழ் · فارسی · Українська · 中文</div>
+    <div class="header-sub">Instructions · Français · Español · العربية · தமிழ் · فارسی · Українська · 中文</div>
   </div>
 </div>
 
 <nav class="lang-nav">
   <a href="javascript:void(0)" onclick="jumpTo('lang-en')">English</a>
   <a href="javascript:void(0)" onclick="jumpTo('lang-fr')">Français</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-es')">Español</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-ar')">العربية</a>
   <a href="javascript:void(0)" onclick="jumpTo('lang-ta')">தமிழ்</a>
   <a href="javascript:void(0)" onclick="jumpTo('lang-fa')">فارسی</a>
   <a href="javascript:void(0)" onclick="jumpTo('lang-uk')">Українська</a>
@@ -350,7 +351,7 @@
     <div class="refill-icon">♻️</div>
     <div>
       <div class="refill-title">Bring back your empty bottle</div>
-      <div class="refill-detail">Return your clean, empty bottle to the Stouffville Food Bank for a refill. Help reduce plastic waste by reusing your bottle.</div>
+      <div class="refill-detail">Return your clean, empty bottle to the Stouffville Food Bank for a refill.<br><br>⚠️ Your original bottle <strong>MUST</strong> be brought back to get a refill.</div>
     </div>
   </div>
   <div class="eco-card">
@@ -391,7 +392,7 @@
     <div class="refill-icon">♻️</div>
     <div>
       <div class="refill-title">Rapportez votre bouteille vide</div>
-      <div class="refill-detail">Retournez votre bouteille propre et vide à la Banque alimentaire de Stouffville pour la recharger. Aidez à réduire les déchets plastiques en réutilisant votre bouteille.</div>
+      <div class="refill-detail">Retournez votre bouteille propre et vide à la Banque alimentaire de Stouffville pour la recharger.<br><br>⚠️ La bouteille d'origine <strong>DOIT</strong> être rapportée pour obtenir une recharge.</div>
     </div>
   </div>
   <div class="eco-card">
@@ -432,7 +433,7 @@
     <div class="refill-icon">♻️</div>
     <div>
       <div class="refill-title">காலி பாட்டிலை திருப்பி கொண்டுவாருங்கள்</div>
-      <div class="refill-detail">சுத்தமான, காலி பாட்டிலை Stouffville Food Bank-க்கு மீண்டும் நிரப்புவதற்காக திருப்பி கொண்டுவாருங்கள். பாட்டிலை மீண்டும் பயன்படுத்துவதன் மூலம் பிளாஸ்டிக் கழிவுகளை குறைக்க உதவுங்கள்.</div>
+      <div class="refill-detail">சுத்தமான, காலி பாட்டிலை Stouffville Food Bank-க்கு திருப்பி கொண்டுவாருங்கள்.<br><br>⚠️ மீண்டும் நிரப்புவதற்கு அசல் பாட்டில் <strong>கட்டாயம்</strong> திரும்பக் கொண்டுவரப்பட வேண்டும்.</div>
     </div>
   </div>
   <div class="eco-card">
@@ -473,7 +474,7 @@
     <div class="refill-icon">♻️</div>
     <div>
       <div class="refill-title">بطری خالی را برگردانید</div>
-      <div class="refill-detail">بطری تمیز و خالی خود را به بانک غذایی Stouffville برگردانید تا دوباره پر شود. با استفاده مجدد از بطری در کاهش ضایعات پلاستیکی کمک کنید.</div>
+      <div class="refill-detail">بطری تمیز و خالی خود را به بانک غذایی Stouffville برگردانید.<br><br>⚠️ بطری اصلی <strong>باید</strong> برای دریافت شارژ مجدد برگردانده شود.</div>
     </div>
   </div>
   <div class="eco-card">
@@ -514,7 +515,7 @@
     <div class="refill-icon">♻️</div>
     <div>
       <div class="refill-title">Поверніть порожній флакон</div>
-      <div class="refill-detail">Принесіть чистий порожній флакон до Stouffville Food Bank для повторного наповнення. Допоможіть зменшити кількість пластикових відходів, повторно використовуючи флакон.</div>
+      <div class="refill-detail">Принесіть чистий порожній флакон до Stouffville Food Bank для повторного наповнення.<br><br>⚠️ Оригінальний флакон <strong>НЕОБХІДНО</strong> повернути для отримання повторного наповнення.</div>
     </div>
   </div>
   <div class="eco-card">
@@ -555,7 +556,7 @@
     <div class="refill-icon">♻️</div>
     <div>
       <div class="refill-title">归还空瓶</div>
-      <div class="refill-detail">请将干净的空瓶带回 Stouffville Food Bank 进行补充。重复使用瓶子，帮助减少塑料垃圾。</div>
+      <div class="refill-detail">请将干净的空瓶带回 Stouffville Food Bank 进行补充。<br><br>⚠️ <strong>必须</strong>携带原瓶才能获得补充。</div>
     </div>
   </div>
   <div class="eco-card">
@@ -568,7 +569,89 @@
 </div>
 
 
-<script>
+<!-- ══════════════ SPANISH ══════════════ -->
+<div id="lang-es" class="lang-divider lang-anchor"><span class="lang-divider-name">Español</span></div>
+<div class="panel" id="panel-es">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Mantener fuera del alcance de los niños</div></div>
+  <div class="section-label">Modo de uso</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">Paso 1</div>
+        <div class="step-title">Añadir 20 ml de detergente</div>
+        <div class="step-detail">Vierta en el cajón del detergente o en el tambor según las instrucciones del fabricante de su lavadora.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">Paso 2</div>
+        <div class="step-title">Inicie el ciclo de lavado</div>
+        <div class="step-detail">Este frasco contiene suficiente detergente para <strong>10 lavados</strong>.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label">Programa de recarga</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">Devuelva su frasco vacío</div>
+      <div class="refill-detail">Devuelva su frasco limpio y vacío al Stouffville Food Bank para recargarlo.<br><br>⚠️ El frasco original <strong>DEBE</strong> ser devuelto para obtener una recarga.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">Programa de recarga sostenible</div>
+      <div class="eco-detail">Cada frasco reutilizado es uno menos en el vertedero. Gracias por cuidar el planeta.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ARABIC ══════════════ -->
+<div id="lang-ar" class="lang-divider lang-anchor"><span class="lang-divider-name">العربية</span></div>
+<div class="panel" id="panel-ar" dir="rtl">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">يُحفظ بعيداً عن متناول الأطفال</div></div>
+  <div class="section-label" style="text-align:right">طريقة الاستخدام</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">الخطوة ١</div>
+        <div class="step-title">أضف ٢٠ مل من المنظف</div>
+        <div class="step-detail">صبّ في درج المنظف أو الأسطوانة وفقاً لتعليمات الشركة المصنّعة لغسالتك.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">الخطوة ٢</div>
+        <div class="step-title">ابدأ دورة الغسيل</div>
+        <div class="step-detail">تحتوي هذه الزجاجة على ما يكفي من المنظف لـ <strong>١٠ دورات غسيل</strong>.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label" style="text-align:right">برنامج إعادة التعبئة</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">أعد الزجاجة الفارغة</div>
+      <div class="refill-detail">أعد زجاجتك النظيفة الفارغة إلى Stouffville Food Bank لإعادة تعبئتها.<br><br>⚠️ <strong>يجب</strong> إعادة الزجاجة الأصلية للحصول على إعادة التعبئة.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">برنامج إعادة التعبئة المستدام</div>
+      <div class="eco-detail">كل زجاجة تُعاد استخدامها تعني زجاجة أقل في مكبّ النفايات. شكراً لاهتمامك بالكوكب.</div>
+    </div>
+  </div>
+</div>
+
+
 function jumpTo(id) {
   var el = document.getElementById(id);
   if (el) {

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laundry Detergent Instructions — Stouffville Food Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #16A34A;
+    --blue-light: #DCFCE7;
+    --green: #16A34A;
+    --green-light: #F0FDF4;
+    --orange: #EA580C;
+    --orange-light: #FFF7ED;
+    --ink: #0F172A;
+    --ink2: #475569;
+    --border: #E2E8F0;
+    --bg: #F8FAFC;
+    --white: #FFFFFF;
+    --tab-h: 52px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--blue);
+    padding: 24px 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-logo {
+    height: 64px;
+    width: auto;
+  }
+  .header-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── LANGUAGE TABS ── */
+  .lang-tabs {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .lang-tabs::-webkit-scrollbar { display: none; }
+  .lang-tab {
+    flex-shrink: 0;
+    padding: 0 18px;
+    height: var(--tab-h);
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink2);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .lang-tab .lang-native {
+    font-size: 11px;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+  .lang-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+    border-radius: 3px 3px 0 0;
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .lang-tab.active { color: var(--blue); }
+  .lang-tab.active::after { transform: scaleX(1); }
+
+  /* ── CONTENT PANELS ── */
+  .panel { display: none; padding: 20px 16px 40px; max-width: 480px; margin: 0 auto; }
+  .panel.active { display: block; }
+
+  /* ── WARNING BANNER ── */
+  .warning {
+    background: var(--orange-light);
+    border: 1.5px solid #FDBA74;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .warning-icon { font-size: 22px; flex-shrink: 0; }
+  .warning-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #9A3412;
+    line-height: 1.4;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink2);
+    margin-bottom: 12px;
+    padding-left: 2px;
+  }
+
+  /* ── STEPS ── */
+  .steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .step {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .step-icon-wrap {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: var(--blue-light);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .step-body { flex: 1; padding-top: 2px; }
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .step-detail {
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .step-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+  }
+
+  /* ── REFILL CARD ── */
+  .refill-card {
+    background: var(--green-light);
+    border: 1.5px solid #86EFAC;
+    border-radius: 16px;
+    padding: 18px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .refill-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+  .refill-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .refill-detail {
+    font-size: 13px;
+    color: #166534;
+    line-height: 1.5;
+  }
+
+  /* ── ECO FOOTER ── */
+  .eco-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .eco-icon { font-size: 22px; flex-shrink: 0; }
+  .eco-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+  .eco-detail { font-size: 12px; color: var(--ink2); line-height: 1.4; }
+
+  /* ── RTL support ── */
+  [dir="rtl"] .step, [dir="rtl"] .refill-card,
+  [dir="rtl"] .warning, [dir="rtl"] .eco-card { flex-direction: row-reverse; }
+  [dir="rtl"] .step-body, [dir="rtl"] .refill-card > div { text-align: right; }
+  [dir="rtl"] .section-label { padding-left: 0; padding-right: 2px; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:white;letter-spacing:-0.3px;">Laundry Detergent</div>
+    <div class="header-sub">Instructions · Mode d'emploi · 说明</div>
+  </div>
+</div>
+
+<div class="lang-tabs" role="tablist">
+  <button class="lang-tab active" onclick="showLang('en',this)">English<span class="lang-native">English</span></button>
+  <button class="lang-tab" onclick="showLang('fr',this)">French<span class="lang-native">Français</span></button>
+  <button class="lang-tab" onclick="showLang('ta',this)">Tamil<span class="lang-native">தமிழ்</span></button>
+  <button class="lang-tab" onclick="showLang('fa',this)">Farsi<span class="lang-native">فارسی</span></button>
+  <button class="lang-tab" onclick="showLang('uk',this)">Ukrainian<span class="lang-native">Українська</span></button>
+  <button class="lang-tab" onclick="showLang('zh',this)">Chinese<span class="lang-native">中文</span></button>
+</div>
+
+<!-- ══════════════ ENGLISH ══════════════ -->
+<div class="panel active" id="panel-en">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Keep out of reach of children</div></div>
+  <div class="section-label">How to Use</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">Step 1</div>
+        <div class="step-title">Add 20 ml of detergent</div>
+        <div class="step-detail">Pour into the detergent drawer or drum as per your washing machine's manufacturer instructions.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">Step 2</div>
+        <div class="step-title">Run your wash cycle</div>
+        <div class="step-detail">This bottle contains enough detergent for <strong>10 loads</strong> of laundry.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label">Refill Program</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">Bring back your empty bottle</div>
+      <div class="refill-detail">Return your clean, empty bottle to the Stouffville Food Bank for a refill. Help reduce plastic waste by reusing your bottle.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">Sustainable Refill Program</div>
+      <div class="eco-detail">Every bottle reused is one less bottle in landfill. Thank you for helping the planet.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FRENCH ══════════════ -->
+<div class="panel" id="panel-fr">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Tenir hors de portée des enfants</div></div>
+  <div class="section-label">Mode d'emploi</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">Étape 1</div>
+        <div class="step-title">Ajouter 20 ml de détergent</div>
+        <div class="step-detail">Versez dans le tiroir à détergent ou dans le tambour selon les instructions du fabricant de votre machine à laver.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">Étape 2</div>
+        <div class="step-title">Lancez votre cycle de lavage</div>
+        <div class="step-detail">Cette bouteille contient suffisamment de détergent pour <strong>10 lessives</strong>.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label">Programme de recharge</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">Rapportez votre bouteille vide</div>
+      <div class="refill-detail">Retournez votre bouteille propre et vide à la Banque alimentaire de Stouffville pour la recharger. Aidez à réduire les déchets plastiques en réutilisant votre bouteille.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">Programme de recharge durable</div>
+      <div class="eco-detail">Chaque bouteille réutilisée évite une bouteille en décharge. Merci de contribuer à la protection de la planète.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TAMIL ══════════════ -->
+<div class="panel" id="panel-ta">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">குழந்தைகளின் எட்டாத இடத்தில் வைக்கவும்</div></div>
+  <div class="section-label">பயன்படுத்தும் முறை</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">படி 1</div>
+        <div class="step-title">20 மி.லி. சோப்பு திரவம் சேர்க்கவும்</div>
+        <div class="step-detail">உங்கள் வாஷிங் மெஷினின் உற்பத்தியாளர் வழிமுறைகளின்படி சோப்பு திரவத்தை இயந்திரத்தில் ஊற்றவும்.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">படி 2</div>
+        <div class="step-title">துவைக்கும் சுழற்சியை இயக்கவும்</div>
+        <div class="step-detail">இந்த பாட்டிலில் <strong>10 துவைப்புகளுக்கு</strong> போதுமான சோப்பு திரவம் உள்ளது.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label">மீண்டும் நிரப்பும் திட்டம்</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">காலி பாட்டிலை திருப்பி கொண்டுவாருங்கள்</div>
+      <div class="refill-detail">சுத்தமான, காலி பாட்டிலை Stouffville Food Bank-க்கு மீண்டும் நிரப்புவதற்காக திருப்பி கொண்டுவாருங்கள். பாட்டிலை மீண்டும் பயன்படுத்துவதன் மூலம் பிளாஸ்டிக் கழிவுகளை குறைக்க உதவுங்கள்.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">நிலையான மீண்டும் நிரப்பும் திட்டம்</div>
+      <div class="eco-detail">மீண்டும் பயன்படுத்தப்படும் ஒவ்வொரு பாட்டிலும் ஒரு குறைந்த பிளாஸ்டிக் கழிவு. நன்றி.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FARSI ══════════════ -->
+<div class="panel" id="panel-fa" dir="rtl">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">دور از دسترس کودکان نگه دارید</div></div>
+  <div class="section-label" style="text-align:right">نحوه استفاده</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">مرحله ۱</div>
+        <div class="step-title">۲۰ میلی‌لیتر مایع لباسشویی اضافه کنید</div>
+        <div class="step-detail">طبق دستورالعمل سازنده ماشین لباسشویی، مایع را در کشوی مخصوص یا درون دستگاه بریزید.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">مرحله ۲</div>
+        <div class="step-title">چرخه شستشو را راه‌اندازی کنید</div>
+        <div class="step-detail">این بطری به اندازه کافی برای <strong>۱۰ بار شستشو</strong> مایع دارد.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label" style="text-align:right">برنامه شارژ مجدد</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">بطری خالی را برگردانید</div>
+      <div class="refill-detail">بطری تمیز و خالی خود را به بانک غذایی Stouffville برگردانید تا دوباره پر شود. با استفاده مجدد از بطری در کاهش ضایعات پلاستیکی کمک کنید.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">برنامه شارژ مجدد پایدار</div>
+      <div class="eco-detail">هر بطری که دوباره استفاده می‌شود یعنی یک بطری کمتر در زباله‌دانی. ممنون از کمک شما.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ UKRAINIAN ══════════════ -->
+<div class="panel" id="panel-uk">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Зберігати в недоступному для дітей місці</div></div>
+  <div class="section-label">Як використовувати</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">Крок 1</div>
+        <div class="step-title">Додайте 20 мл засобу</div>
+        <div class="step-detail">Налийте в лоток для засобу або безпосередньо в барабан відповідно до інструкцій виробника вашої пральної машини.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">Крок 2</div>
+        <div class="step-title">Запустіть цикл прання</div>
+        <div class="step-detail">Цього флакона вистачає на <strong>10 прань</strong>.</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label">Програма повторного наповнення</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">Поверніть порожній флакон</div>
+      <div class="refill-detail">Принесіть чистий порожній флакон до Stouffville Food Bank для повторного наповнення. Допоможіть зменшити кількість пластикових відходів, повторно використовуючи флакон.</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">Програма сталого повторного використання</div>
+      <div class="eco-detail">Кожен повторно використаний флакон — це менше пластику на сміттєзвалищі. Дякуємо за турботу про планету.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CHINESE ══════════════ -->
+<div class="panel" id="panel-zh">
+  <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">请放在儿童无法触及的地方</div></div>
+  <div class="section-label">使用方法</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon-wrap">🧴</div>
+      <div class="step-body">
+        <div class="step-badge">第 1 步</div>
+        <div class="step-title">加入 20 毫升洗衣液</div>
+        <div class="step-detail">按照洗衣机制造商的说明，将洗衣液倒入洗涤剂抽屉或滚筒中。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon-wrap">👕</div>
+      <div class="step-body">
+        <div class="step-badge">第 2 步</div>
+        <div class="step-title">启动洗涤程序</div>
+        <div class="step-detail">本瓶洗衣液可供<strong>洗涤 10 次</strong>使用。</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section-label">补充计划</div>
+  <div class="refill-card">
+    <div class="refill-icon">♻️</div>
+    <div>
+      <div class="refill-title">归还空瓶</div>
+      <div class="refill-detail">请将干净的空瓶带回 Stouffville Food Bank 进行补充。重复使用瓶子，帮助减少塑料垃圾。</div>
+    </div>
+  </div>
+  <div class="eco-card">
+    <div class="eco-icon">🌿</div>
+    <div>
+      <div class="eco-title">可持续补充计划</div>
+      <div class="eco-detail">每一个重复使用的瓶子，都减少了一个进入垃圾填埋场的瓶子。感谢您为地球做出的贡献。</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showLang(code, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + code).classList.add('active');
+  btn.classList.add('active');
+  document.body.dir = code === 'fa' ? 'rtl' : 'ltr';
+}
+</script>
+</body>
+</html>

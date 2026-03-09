@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,8 +119,7 @@
   .lang-tab.active::after { transform: scaleX(1); }
 
   /* ── CONTENT PANELS ── */
-  .panel { display: none; padding: 20px 16px 40px; max-width: 480px; margin: 0 auto; }
-  .panel.active { display: block; }
+  .panel { display: block; padding: 0 16px 40px; max-width: 480px; margin: 0 auto; }
 
   /* ── WARNING BANNER ── */
   .warning {
@@ -242,6 +242,63 @@
   [dir="rtl"] .step-body, [dir="rtl"] .refill-card > div { text-align: right; }
   [dir="rtl"] .section-label { padding-left: 0; padding-right: 2px; }
 
+  /* ── SCROLL ANCHOR ── */
+  html { scroll-behavior: smooth; }
+  .lang-anchor { scroll-margin-top: 120px; }
+
+  /* ── NAV BAR ── */
+  .lang-nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .lang-nav a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink2);
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .lang-nav a:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-light);
+  }
+
+  /* ── LANG DIVIDER ── */
+  .lang-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 16px 16px;
+    max-width: 480px;
+    margin: 0 auto;
+    border-top: 2px solid var(--blue);
+  }
+  .lang-divider:first-of-type { border-top: none; padding-top: 8px; }
+  .lang-divider-flag { font-size: 24px; }
+  .lang-divider-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--blue);
+    font-weight: 400;
+  }
+
   /* ── DIVIDER ── */
   .divider { height: 1px; background: var(--border); margin: 24px 0; }
 </style>
@@ -251,21 +308,22 @@
 <div class="header">
   <div class="header-inner">
     <div style="font-family:'DM Serif Display',serif;font-size:28px;color:white;letter-spacing:-0.3px;">Laundry Detergent</div>
-    <div class="header-sub">Instructions · Mode d'emploi · 说明</div>
+    <div class="header-sub">Instructions · Français · தமிழ் · فارسی · Українська · 中文</div>
   </div>
 </div>
 
-<div class="lang-tabs" role="tablist">
-  <button class="lang-tab active" onclick="showLang('en',this)">English<span class="lang-native">English</span></button>
-  <button class="lang-tab" onclick="showLang('fr',this)">French<span class="lang-native">Français</span></button>
-  <button class="lang-tab" onclick="showLang('ta',this)">Tamil<span class="lang-native">தமிழ்</span></button>
-  <button class="lang-tab" onclick="showLang('fa',this)">Farsi<span class="lang-native">فارسی</span></button>
-  <button class="lang-tab" onclick="showLang('uk',this)">Ukrainian<span class="lang-native">Українська</span></button>
-  <button class="lang-tab" onclick="showLang('zh',this)">Chinese<span class="lang-native">中文</span></button>
-</div>
+<nav class="lang-nav">
+  <a href="javascript:void(0)" onclick="jumpTo('lang-en')">English</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-fr')">Français</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-ta')">தமிழ்</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-fa')">فارسی</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-uk')">Українська</a>
+  <a href="javascript:void(0)" onclick="jumpTo('lang-zh')">中文</a>
+</nav>
 
 <!-- ══════════════ ENGLISH ══════════════ -->
-<div class="panel active" id="panel-en">
+<div id="lang-en" class="lang-divider lang-anchor" style="border-top: none; padding-top: 8px;"><span class="lang-divider-name">English</span></div>
+<div class="panel" id="panel-en">
   <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Keep out of reach of children</div></div>
   <div class="section-label">How to Use</div>
   <div class="steps">
@@ -305,6 +363,7 @@
 </div>
 
 <!-- ══════════════ FRENCH ══════════════ -->
+<div id="lang-fr" class="lang-divider lang-anchor"><span class="lang-divider-name">Français</span></div>
 <div class="panel" id="panel-fr">
   <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Tenir hors de portée des enfants</div></div>
   <div class="section-label">Mode d'emploi</div>
@@ -345,6 +404,7 @@
 </div>
 
 <!-- ══════════════ TAMIL ══════════════ -->
+<div id="lang-ta" class="lang-divider lang-anchor"><span class="lang-divider-name">தமிழ்</span></div>
 <div class="panel" id="panel-ta">
   <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">குழந்தைகளின் எட்டாத இடத்தில் வைக்கவும்</div></div>
   <div class="section-label">பயன்படுத்தும் முறை</div>
@@ -385,6 +445,7 @@
 </div>
 
 <!-- ══════════════ FARSI ══════════════ -->
+<div id="lang-fa" class="lang-divider lang-anchor"><span class="lang-divider-name">فارسی</span></div>
 <div class="panel" id="panel-fa" dir="rtl">
   <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">دور از دسترس کودکان نگه دارید</div></div>
   <div class="section-label" style="text-align:right">نحوه استفاده</div>
@@ -425,6 +486,7 @@
 </div>
 
 <!-- ══════════════ UKRAINIAN ══════════════ -->
+<div id="lang-uk" class="lang-divider lang-anchor"><span class="lang-divider-name">Українська</span></div>
 <div class="panel" id="panel-uk">
   <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">Зберігати в недоступному для дітей місці</div></div>
   <div class="section-label">Як використовувати</div>
@@ -465,6 +527,7 @@
 </div>
 
 <!-- ══════════════ CHINESE ══════════════ -->
+<div id="lang-zh" class="lang-divider lang-anchor"><span class="lang-divider-name">中文</span></div>
 <div class="panel" id="panel-zh">
   <div class="warning"><div class="warning-icon">⚠️</div><div class="warning-text">请放在儿童无法触及的地方</div></div>
   <div class="section-label">使用方法</div>
@@ -504,13 +567,15 @@
   </div>
 </div>
 
+
 <script>
-function showLang(code, btn) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('panel-' + code).classList.add('active');
-  btn.classList.add('active');
-  document.body.dir = code === 'fa' ? 'rtl' : 'ltr';
+function jumpTo(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    var offset = 120;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
 }
 </script>
 </body>

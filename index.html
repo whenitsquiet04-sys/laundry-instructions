@@ -305,10 +305,14 @@
 function jumpTo(id) {
   var el = document.getElementById(id);
   if (!el) return;
-  var offset = 120;
-  var scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-  var top = el.getBoundingClientRect().top + scrollY - offset;
-  try { window.scrollTo({ top: top, behavior: 'smooth' }); } catch(e) { window.scrollTo(0, top); }
+  var nav = document.querySelector('.lang-nav');
+  var navH = nav ? nav.getBoundingClientRect().height : 0;
+  var headerH = document.querySelector('.header') ? document.querySelector('.header').getBoundingClientRect().height : 0;
+  var offset = navH + 8;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(function() {
+    window.scrollBy(0, -offset);
+  }, 50);
 }
 </script>
 </head>

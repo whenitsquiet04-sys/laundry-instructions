@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
   :root {
     --blue: #78B833;
@@ -243,7 +244,7 @@
 
   /* ── SCROLL ANCHOR ── */
   html { scroll-behavior: smooth; }
-  .lang-anchor { scroll-margin-top: 120px; }
+  .lang-anchor { scroll-margin-top: 80px; }
 
   /* ── NAV BAR ── */
   .lang-nav {
@@ -301,20 +302,7 @@
   /* ── DIVIDER ── */
   .divider { height: 1px; background: var(--border); margin: 24px 0; }
 </style>
-<script>
-function jumpTo(id) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  var nav = document.querySelector('.lang-nav');
-  var navH = nav ? nav.getBoundingClientRect().height : 0;
-  var headerH = document.querySelector('.header') ? document.querySelector('.header').getBoundingClientRect().height : 0;
-  var offset = navH + 8;
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  setTimeout(function() {
-    window.scrollBy(0, -offset);
-  }, 50);
-}
-</script>
+
 </head>
 <body>
 
@@ -326,14 +314,14 @@ function jumpTo(id) {
 </div>
 
 <nav class="lang-nav">
-  <a href="javascript:void(0)" onclick="jumpTo('lang-en')">English</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-fr')">Français</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-es')">Español</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-ar')">العربية</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-ta')">தமிழ்</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-fa')">فارسی</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-uk')">Українська</a>
-  <a href="javascript:void(0)" onclick="jumpTo('lang-zh')">中文</a>
+  <a href="#lang-en">English</a>
+  <a href="#lang-fr">Français</a>
+  <a href="#lang-es">Español</a>
+  <a href="#lang-ar">العربية</a>
+  <a href="#lang-ta">தமிழ்</a>
+  <a href="#lang-fa">فارسی</a>
+  <a href="#lang-uk">Українська</a>
+  <a href="#lang-zh">中文</a>
 </nav>
 
 <!-- ══════════════ ENGLISH ══════════════ -->
